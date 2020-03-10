@@ -5,7 +5,8 @@ xpack.watcher.enabled: false
 #关闭跨集群复制
 xpack.ccr.enabled: false
 #xpack.rollup.enabled: false
-
+http.cors.enabled: true
+http.cors.allow-origin: "*"
 #xpack.installed:false
 
 # ======================== Elasticsearch Configuration =========================
