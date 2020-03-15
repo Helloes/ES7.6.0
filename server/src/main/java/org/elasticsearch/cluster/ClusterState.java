@@ -114,11 +114,11 @@ public class ClusterState implements ToXContentFragment, Diffable<ClusterState> 
     private final long version;
 
     private final String stateUUID;
-
+    //index在集群中的分片信息
     private final RoutingTable routingTable;
-
+    //集群节点信息
     private final DiscoveryNodes nodes;
-
+    //index基础信息
     private final MetaData metaData;
 
     private final ClusterBlocks blocks;
