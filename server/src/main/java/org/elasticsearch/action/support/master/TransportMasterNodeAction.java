@@ -132,6 +132,7 @@ public abstract class TransportMasterNodeAction<Request extends MasterNodeReques
             try {
                 final Predicate<ClusterState> masterChangePredicate = MasterNodeChangePredicate.build(clusterState);
                 final DiscoveryNodes nodes = clusterState.nodes();
+                //判断本地节点是都为主节点
                 if (nodes.isLocalNodeElectedMaster() || localExecute(request)) {
                     // check for block, if blocked, retry, else, execute locally
                     final ClusterBlockException blockException = checkBlock(request, clusterState);
@@ -163,6 +164,7 @@ public abstract class TransportMasterNodeAction<Request extends MasterNodeReques
                                 delegatedListener.onFailure(t);
                             }
                         });
+                        logger.debug("开启新线程执行任务·！！");
                         threadPool.executor(executor)
                             .execute(ActionRunnable.wrap(delegate, l -> masterOperation(task, request, clusterState, l)));
                     }
