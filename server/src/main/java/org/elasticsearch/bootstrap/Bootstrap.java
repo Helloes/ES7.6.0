@@ -339,7 +339,7 @@ final class Bootstrap {
         // force the class initializer for BootstrapInfo to run before
         // the security manager is installed
         BootstrapInfo.init();
-
+        
         INSTANCE = new Bootstrap();
 
         final SecureSettings keystore = loadSecureSettings(initialEnv);
@@ -394,7 +394,7 @@ final class Bootstrap {
             }
 
             INSTANCE.start();
-
+           
             // We don't close stderr if `--quiet` is passed, because that
             // hides fatal startup errors. For example, if Elasticsearch is
             // running via systemd, the init script only specifies
@@ -448,7 +448,8 @@ final class Bootstrap {
 
     @SuppressForbidden(reason = "System#out")
     private static Runnable getSysOutCloser() {
-       return System.out::close;
+//       return System.out::close;
+    	return null;
     }
 
     @SuppressForbidden(reason = "System#err")
