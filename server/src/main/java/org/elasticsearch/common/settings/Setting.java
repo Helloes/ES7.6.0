@@ -85,57 +85,57 @@ import java.util.stream.Stream;
  * </pre>
  */
 public class Setting<T> implements ToXContentObject {
-
+	//性能
     public enum Property {
-        /**
+        /**过滤·
          * should be filtered in some api (mask password/credentials)
          */
         Filtered,
 
-        /**
+        /**动态
          * iff this setting can be dynamically updateable
          */
         Dynamic,
 
-        /**
+        /**固定
          * mark this setting as final, not updateable even when the context is not dynamic
          * ie. Setting this property on an index scoped setting will fail update when the index is closed
          */
         Final,
 
-        /**
+        /**反对、放弃
          * mark this setting as deprecated
          */
         Deprecated,
 
-        /**
+        /**节点类型
          * Node scope
          */
         NodeScope,
 
-        /**
+        /**一致的，适用于全部节点
          * Secure setting values equal on all nodes
          */
         Consistent,
 
-        /**
+        /**范围
          * Index scope
          */
         IndexScope,
 
-        /**
+        /**不可复制大小
          * Mark this setting as not copyable during an index resize (shrink or split). This property can only be applied to settings that
          * also have {@link Property#IndexScope}.
          */
         NotCopyableOnResize,
 
-        /**
+        /**内部索引
          * Indicates an index-level setting that is managed internally. Such a setting can only be added to an index on index creation but
          * can not be updated via the update API.
          */
         InternalIndex,
 
-        /**
+        /**私有
          * Indicates an index-level setting that is privately managed. Such a setting can not even be set on index creation.
          */
         PrivateIndex
